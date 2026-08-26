@@ -119,9 +119,6 @@ Outputs a `.webm` and a `report.json` with the real marker counts into
   [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
 - Lazy profiling mode (`js-profiling-mode`):
   [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
-- Prior art this builds on: Victor Huang's
-  [js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo)
-  (a pass/fail test harness — this repo is the visual, shareable version).
 
 ## License
 
