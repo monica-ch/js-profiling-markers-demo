@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JS Self-Profiling Markers — Live Demo</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Crect x='6' y='16' width='4' height='10' fill='%2317b978'/%3E%3Crect x='12' y='10' width='4' height='16' fill='%234285f4'/%3E%3Crect x='18' y='13' width='4' height='13' fill='%23ab6bd8'/%3E%3Crect x='24' y='7' width='4' height='19' fill='%23f4b400'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>JS Self-Profiling <span class="accent">Markers</span></h1>
+    </div>
+    <div class="ctx" id="ctx">
+      <span class="ctx-pill" id="ctxIsolation">checking…</span>
+      <span class="ctx-pill" id="ctxApi">Profiler: …</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>
+        The <strong>JS Self-Profiling API</strong> lets a page profile its own JavaScript with a
+        sampling profiler. The <strong>markers</strong> extension (currently in Origin Trial)
+        adds a <code>marker</code> field to each sample telling you what the user agent was doing when
+        the sample was taken — <em>script</em>, <em>gc</em>, <em>style</em>, <em>layout</em>, or <em>paint</em>.
+      </p>
+      <p class="gating">
+        Exposure is gated on cross-origin isolation:
+        <span class="tag t-style">style</span><span class="tag t-layout">layout</span>
+        are available everywhere;
+        <span class="tag t-script">script</span><span class="tag t-gc">gc</span><span class="tag t-paint">paint</span>
+        require a cross-origin-isolated (COOP+COEP) document.
+      </p>
+    </section>
+
+    <section class="controls">
+      <button id="runBtn" class="primary">▶ Run profiled workload</button>
+      <label class="sel">
+        Sample interval
+        <select id="interval">
+          <option value="1">1 ms</option>
+          <option value="4" selected>4 ms</option>
+          <option value="10">10 ms</option>
+        </select>
+      </label>
+      <span id="runState" class="run-state"></span>
+    </section>
+
+    <section class="grid">
+      <div class="panel timeline-panel">
+        <div class="panel-h">
+          <h2>Sample timeline</h2>
+          <span class="hint">each bar = one sample, colored by marker</span>
+        </div>
+        <div id="timeline" class="timeline" aria-label="sample timeline"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+
+      <aside class="panel stats-panel">
+        <div class="panel-h"><h2>Marker breakdown</h2></div>
+        <div id="bars" class="bars"></div>
+        <dl class="meta" id="meta"></dl>
+      </aside>
+    </section>
+
+    <section class="panel workloads-panel">
+      <div class="panel-h"><h2>What ran</h2><span class="hint">the workload deliberately triggers every marker type</span></div>
+      <ul id="workloadLog" class="workload-log"></ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Works in Edge &amp; Chrome (Blink). No browser flags needed on <code>localhost</code> during the Origin Trial.</span>
+    <span id="links"></span>
+  </footer>
+
+  <script src="./workloads.js"></script>
+  <script src="./demo.js"></script>
+</body>
+</html>
