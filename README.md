@@ -14,11 +14,13 @@ engine work your JS triggered but never appears in a JS stack.
 > Works identically in **Edge** and **Chrome** — they share the same Blink/V8
 > engine. This demo is engine-level, not browser-specific.
 
-![demo](media/demo-msedge-coi.webm)
+![JS Self-Profiling Markers demo dashboard](media/screenshot-coi.png)
 
-*(Recording: Edge, cross-origin-isolated route. The timeline colors each sample
-by its marker; the breakdown shows how the same workload splits across engine
-phases.)*
+*Edge, cross-origin-isolated route. The timeline colors each sample by its
+marker; the breakdown shows how the same workload splits across engine phases.*
+▶ **Video:** [`media/demo-msedge-coi.webm`](media/demo-msedge-coi.webm)
+(all five markers) · [`media/demo-msedge-no-coi.webm`](media/demo-msedge-no-coi.webm)
+(style + layout only).
 
 ---
 
