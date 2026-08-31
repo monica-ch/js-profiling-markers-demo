@@ -107,7 +107,25 @@ async function main() {
   }
 
   const summary = { browser: BROWSER, route: ROUTE, url: URL, video: videoPath, consoleErrors, ...report };
-  fs.writeFileSync(path.join(MEDIA, 'report.json'), JSON.stringify(summary, null, 2));
+
+  // Write a per-route report so capturing one route never clobbers the other.
+  const routeSlug = ROUTE.replace('/', '') || 'root';
+  fs.writeFileSync(path.join(MEDIA, `report-${routeSlug}.json`), JSON.stringify(summary, null, 2));
+
+  // Maintain a combined report.json that holds the latest run for every route
+  // captured so far, so the repo can show the coi vs no-coi contrast at a glance.
+  const combinedPath = path.join(MEDIA, 'report.json');
+  let combined = {};
+  if (fs.existsSync(combinedPath)) {
+    try {
+      const prev = JSON.parse(fs.readFileSync(combinedPath, 'utf8'));
+      // Support both the new keyed shape and any legacy single-object file.
+      if (prev && prev.runs && typeof prev.runs === 'object') combined = prev.runs;
+      else if (prev && prev.route) combined[prev.route] = prev;
+    } catch { /* start fresh if the existing file is unreadable */ }
+  }
+  combined[ROUTE] = summary;
+  fs.writeFileSync(combinedPath, JSON.stringify({ runs: combined }, null, 2));
 
   console.log('\n=== CAPTURE REPORT ===');
   console.log(JSON.stringify(summary, null, 2));

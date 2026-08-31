@@ -52,9 +52,19 @@ The richer markers require the stronger isolation guarantee that
 cross-origin isolation provides. You can see this live: run the demo on both
 routes and compare the breakdown.
 
-The captured runs in [`media/report.json`](media/report.json) show exactly this
-contrast — the `/coi` run reports all marker types, the `/no-coi` run reports
-only `style` and `layout`.
+You can see this contrast in the committed captures:
+
+- **`/no-coi`** — the recorded run in [`media/report-no-coi.json`](media/report-no-coi.json)
+  reports only `style` and `layout`, and the
+  [no-coi video](media/demo-msedge-no-coi.webm) shows the same.
+- **`/coi`** — the [coi video](media/demo-msedge-coi.webm) and the
+  [dashboard screenshot](media/screenshot-coi.png) show all five markers
+  (`script`, `gc`, `style`, `layout`, `paint`).
+
+Re-running the recorder for a route refreshes its `media/report-<route>.json`
+file and merges the latest run for every captured route into a combined
+[`media/report.json`](media/report.json), so capturing one route never
+overwrites the other.
 
 ## Run it
 
@@ -95,8 +105,10 @@ BROWSER=msedge ROUTE=/coi    npm run record   # all five markers
 BROWSER=msedge ROUTE=/no-coi npm run record   # style + layout only
 ```
 
-Outputs a `.webm` and a `report.json` with the real marker counts into
-`media/`. Set `BROWSER=chrome` to record in Chrome instead.
+Outputs a `.webm` video plus a per-route `media/report-<route>.json` with the
+real marker counts, and merges the latest run for each route into a combined
+`media/report.json`. Capturing one route never overwrites the other. Set
+`BROWSER=chrome` to record in Chrome instead.
 
 ## How it works
 
@@ -110,7 +122,8 @@ Outputs a `.webm` and a `report.json` with the real marker counts into
 - [`scripts/server.cjs`](scripts/server.cjs) — sets `Document-Policy:
   js-profiling` on every response and adds COOP+COEP on `/coi`.
 - [`scripts/record.mjs`](scripts/record.mjs) — drives the page with Playwright,
-  captures a video, and extracts the real marker counts.
+  captures a video, and writes the real marker counts to a per-route report plus
+  a combined `media/report.json`.
 
 ## Background & specs
 
