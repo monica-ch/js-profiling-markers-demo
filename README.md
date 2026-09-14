@@ -95,8 +95,6 @@ Click **Run profile** and watch the timeline fill in.
 - **Markers explainer:** [WICG/js-self-profiling — markers.md](https://github.com/WICG/js-self-profiling/blob/main/markers.md)
 - **Spec & repo:** [WICG/js-self-profiling](https://github.com/WICG/js-self-profiling)
 - **Edge explainer (conditional marker exposure):** [MSEdgeExplainers/ConditionalMarkersExposure](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ConditionalMarkersExposure/explainer.md)
-- **Security discussion (COI gating):** [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
-- **Lazy profiling mode (`js-profiling-mode`):** [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
 - **Origin Trial console:** [JS Self-Profiling Markers trial](https://developer.chrome.com/origintrials/#/view_trial/2442639847895072769)
 - **Chrome Status:** [feature/5201297767792640](https://chromestatus.com/feature/5201297767792640)
 - **Original demo:** [victorhuangwq/js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo) by [Victor Huang](https://github.com/victorhuangwq)
