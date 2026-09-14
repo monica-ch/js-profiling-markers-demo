@@ -1,5 +1,11 @@
 # JS Self-Profiling Markers — Live Demo
 
+> **Based on the original demo by [Victor Huang](https://github.com/victorhuangwq)** —
+> see [victorhuangwq/js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo).
+> See also Datadog's non-isolated-context fork by
+> [Thomas Bertet](https://github.com/thomasbertet) at
+> [thomasbertet/js-profiler-markers-demo](https://github.com/thomasbertet/js-profiler-markers-demo).
+
 A small, self-contained demo of the **markers extension** to the
 [JS Self-Profiling API](https://wicg.github.io/js-self-profiling/), which is now
 in **Origin Trial** in Chromium (Microsoft Edge and Google Chrome, **M153–M161**).
@@ -132,8 +138,6 @@ real marker counts, and merges the latest run for each route into a combined
   [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
 - Lazy profiling mode (`js-profiling-mode`):
   [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
-- Related demos: Victor Huang's original PoC (<https://github.com/victorhuangwq/js-profiler-markers-demo>)
-  and Datadog's non-isolated-context demo by Thomas Bertet (<https://github.com/thomasbertet/js-profiler-markers-demo>)
 
 ## License
 
