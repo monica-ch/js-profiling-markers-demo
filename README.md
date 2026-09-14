@@ -24,9 +24,6 @@ engine work your JS triggered but never appears in a JS stack.
 
 *Edge, cross-origin-isolated route. The timeline colors each sample by its
 marker; the breakdown shows how the same workload splits across engine phases.*
-▶ **Video:** [`media/demo-msedge-coi.webm`](media/demo-msedge-coi.webm)
-(all five markers) · [`media/demo-msedge-no-coi.webm`](media/demo-msedge-no-coi.webm)
-(style + layout only).
 
 ---
 
@@ -58,25 +55,10 @@ The richer markers require the stronger isolation guarantee that
 cross-origin isolation provides. You can see this live: run the demo on both
 routes and compare the breakdown.
 
-You can see this contrast in the committed captures:
-
-- **`/no-coi`** — the recorded run in [`media/report-no-coi.json`](media/report-no-coi.json)
-  reports only `style` and `layout`, and the
-  [no-coi video](media/demo-msedge-no-coi.webm) shows the same.
-- **`/coi`** — the [coi video](media/demo-msedge-coi.webm) and the
-  [dashboard screenshot](media/screenshot-coi.png) show all five markers
-  (`script`, `gc`, `style`, `layout`, `paint`).
-
-Re-running the recorder for a route refreshes its `media/report-<route>.json`
-file and merges the latest run for every captured route into a combined
-[`media/report.json`](media/report.json), so capturing one route never
-overwrites the other.
-
 ## Run it
 
 ```bash
-npm install          # only needed if you want to re-record (Playwright)
-npm start            # static server on http://localhost:8123
+npm start            # static server on http://localhost:8123 (no dependencies)
 ```
 
 Then open, in **Edge or Chrome**:
@@ -95,26 +77,6 @@ Click **Run profile** and watch the timeline fill in.
   [Origin Trial](https://developer.chrome.com/origintrials/) and add the token
   via a `<meta http-equiv="origin-trial">` tag or an `Origin-Trial` header. No
   browser flag is needed for real users.
-- **For local capture on a pre-trial stable build** (e.g. an older stable Edge
-  below M153), the recorder passes
-  `--enable-blink-features=ExperimentalJSProfilerMarkers` so the markers are
-  exercised. This is a capture convenience only — production usage uses the OT
-  token, never a flag. Pass `NO_FLAG=1` to omit it when driving a browser that
-  already has the trial feature.
-
-## Re-record the video
-
-```bash
-npm install
-npx playwright install msedge ffmpeg
-BROWSER=msedge ROUTE=/coi    npm run record   # all five markers
-BROWSER=msedge ROUTE=/no-coi npm run record   # style + layout only
-```
-
-Outputs a `.webm` video plus a per-route `media/report-<route>.json` with the
-real marker counts, and merges the latest run for each route into a combined
-`media/report.json`. Capturing one route never overwrites the other. Set
-`BROWSER=chrome` to record in Chrome instead.
 
 ## How it works
 
@@ -127,9 +89,6 @@ real marker counts, and merges the latest run for each route into a combined
   the timeline and breakdown.
 - [`scripts/server.cjs`](scripts/server.cjs) — sets `Document-Policy:
   js-profiling` on every response and adds COOP+COEP on `/coi`.
-- [`scripts/record.mjs`](scripts/record.mjs) — drives the page with Playwright,
-  captures a video, and writes the real marker counts to a per-route report plus
-  a combined `media/report.json`.
 
 ## Background & specs
 

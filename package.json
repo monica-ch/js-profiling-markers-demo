@@ -4,10 +4,6 @@
   "description": "Live demo of the JS Self-Profiling API markers extension (Origin Trial). Works in Edge & Chrome.",
   "license": "MIT",
   "scripts": {
-    "start": "node scripts/server.cjs",
-    "record": "node scripts/record.mjs"
-  },
-  "devDependencies": {
-    "playwright": "^1.62.1"
+    "start": "node scripts/server.cjs"
   }
 }
