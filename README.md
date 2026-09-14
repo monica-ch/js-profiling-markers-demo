@@ -97,6 +97,11 @@ Click **Run profile** and watch the timeline fill in.
   [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
 - Lazy profiling mode (`js-profiling-mode`):
   [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
+- Related demos to explore:
+  [victorhuangwq/js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo)
+  (original marker test) and
+  [thomasbertet/js-profiler-markers-demo](https://github.com/thomasbertet/js-profiler-markers-demo)
+  (Datadog fork with an interactive timeline; focuses on markers in non-isolated contexts).
 
 ## License
 
