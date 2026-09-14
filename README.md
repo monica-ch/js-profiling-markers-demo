@@ -90,18 +90,17 @@ Click **Run profile** and watch the timeline fill in.
 - [`scripts/server.cjs`](scripts/server.cjs) — sets `Document-Policy:
   js-profiling` on every response and adds COOP+COEP on `/coi`.
 
-## Background & specs
+## Links
 
-- Explainer & spec: <https://github.com/WICG/js-self-profiling>
-- Markers extension discussion (COI gating provenance):
-  [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
-- Lazy profiling mode (`js-profiling-mode`):
-  [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
-- Related demos to explore:
-  [victorhuangwq/js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo)
-  (original marker test) and
-  [thomasbertet/js-profiler-markers-demo](https://github.com/thomasbertet/js-profiler-markers-demo)
-  (Datadog fork with an interactive timeline; focuses on markers in non-isolated contexts).
+- **Markers explainer:** [WICG/js-self-profiling — markers.md](https://github.com/WICG/js-self-profiling/blob/main/markers.md)
+- **Spec & repo:** [WICG/js-self-profiling](https://github.com/WICG/js-self-profiling)
+- **Edge explainer (conditional marker exposure):** [MSEdgeExplainers/ConditionalMarkersExposure](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/main/ConditionalMarkersExposure/explainer.md)
+- **Security discussion (COI gating):** [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
+- **Lazy profiling mode (`js-profiling-mode`):** [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
+- **Origin Trial console:** [JS Self-Profiling Markers trial](https://developer.chrome.com/origintrials/#/view_trial/2442639847895072769)
+- **Chrome Status:** [feature/5201297767792640](https://chromestatus.com/feature/5201297767792640)
+- **Original demo:** [victorhuangwq/js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo) by [Victor Huang](https://github.com/victorhuangwq)
+- **Datadog fork (interactive timeline, non-isolated contexts):** [thomasbertet/js-profiler-markers-demo](https://github.com/thomasbertet/js-profiler-markers-demo) by [Thomas Bertet](https://github.com/thomasbertet)
 
 ## License
 
