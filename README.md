@@ -132,25 +132,8 @@ real marker counts, and merges the latest run for each route into a combined
   [WICG/js-self-profiling#61](https://github.com/WICG/js-self-profiling/issues/61)
 - Lazy profiling mode (`js-profiling-mode`):
   [WICG/js-self-profiling#87](https://github.com/WICG/js-self-profiling/pull/87)
-
-## Credits & related demos
-
-This demo builds on earlier work by others exploring the markers extension —
-credit to them for the original ideas and captures:
-
-- **Victor Huang** ([@victorhuangwq](https://github.com/victorhuangwq)) — created
-  the first proof-of-concept:
-  [victorhuangwq/js-profiler-markers-demo](https://github.com/victorhuangwq/js-profiler-markers-demo).
-  This demo grew out of that early snippet.
-- **Thomas Bertet** ([@thomasbertet](https://github.com/thomasbertet), Datadog) —
-  built a partner demo focused on safe markers in non-isolated contexts:
-  [thomasbertet/js-profiler-markers-demo](https://github.com/thomasbertet/js-profiler-markers-demo).
-  Datadog is an early adopter dogfooding the markers Origin Trial in production.
-
-Thanks also to the WICG contributors driving the
-[markers explainer](https://github.com/WICG/js-self-profiling/blob/main/markers.md)
-and spec.
-
+- Related demos: Victor Huang's original PoC (<https://github.com/victorhuangwq/js-profiler-markers-demo>)
+  and Datadog's non-isolated-context demo by Thomas Bertet (<https://github.com/thomasbertet/js-profiler-markers-demo>)
 
 ## License
 
