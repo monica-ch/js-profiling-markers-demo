@@ -55,6 +55,23 @@ The richer markers require the stronger isolation guarantee that
 cross-origin isolation provides. You can see this live: run the demo on both
 routes and compare the breakdown.
 
+## Browser support
+
+The markers extension is in **Origin Trial** in Chromium **M153–M161**, so you
+need a build in that range — **Microsoft Edge or Google Chrome 153 or newer**
+(check `edge://version` / `chrome://version`). The trial covers stable, Beta,
+Dev, and Canary; no browser flag is required.
+
+- **On `localhost`** (this demo): nothing to register. `localhost` is exempt
+  from Origin-Trial tokens — the only requirement is the `Document-Policy:
+  js-profiling` response header, which the demo server sets for you.
+- **On a deployed origin:** register for the
+  [Origin Trial](https://developer.chrome.com/origintrials/) and add the token
+  via a `<meta http-equiv="origin-trial">` tag or an `Origin-Trial` header.
+
+If the page shows **"Profiler API unavailable,"** your browser is outside the
+trial window (or the trial has ended) — update to a current Edge/Chrome build.
+
 ## Run it
 
 ```bash
@@ -66,17 +83,7 @@ Then open, in **Edge or Chrome**:
 - <http://localhost:8123/coi> — cross-origin isolated, all five markers
 - <http://localhost:8123/no-coi> — not isolated, only style + layout
 
-Click **Run profile** and watch the timeline fill in.
-
-### Do I need a flag or a token?
-
-- **On a browser in the trial window (M153–M161), served from localhost:** no.
-  `localhost` is exempt from Origin-Trial tokens, and the only response header
-  the API needs is `Document-Policy: js-profiling` (the server sets it for you).
-- **On a deployed origin:** register for the
-  [Origin Trial](https://developer.chrome.com/origintrials/) and add the token
-  via a `<meta http-equiv="origin-trial">` tag or an `Origin-Trial` header. No
-  browser flag is needed for real users.
+Click **Run profiled workload** and watch the timeline fill in.
 
 ## How it works
 
